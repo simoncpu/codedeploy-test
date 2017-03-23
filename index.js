@@ -1,9 +1,11 @@
-'use strict';
 
+var time = require('time');
 exports.handler = (event, context, callback) => {
-    const msg = 'Hello world!';
-    
-    console.log(msg);
-    callback(null, msg);
+    var currentTime = new time.Date(); 
+    currentTime.setTimezone("America/Los_Angeles");
+    callback(null, {
+        statusCode: '200',
+        body: 'The time in Los Angeles is: ' + currentTime.toString(),
+    });
 };
 
